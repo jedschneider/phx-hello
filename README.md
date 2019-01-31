@@ -1,5 +1,7 @@
 # Hello
 
+[![Build Status](https://travis-ci.org/jedschneider/phx-hello.svg?branch=master)](https://travis-ci.org/jedschneider/phx-hello)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
