@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo "______ Auth Check _________ "
+echo `heroku`
+heroku login
+echo `heroku whoami`

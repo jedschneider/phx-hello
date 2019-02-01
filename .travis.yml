@@ -3,6 +3,10 @@ elixir:
 - 1.7.4
 otp_release:
 - '20.0'
+
+cache:
+  directories:
+    - deps
 env:
   global:
   - LOCAL_POSTGRES_USERNAME=postgres LOCAL_POSTGRES_PASSWORD=postgres
@@ -16,9 +20,9 @@ install:
 - mix deps.get
 script:
 - mix test
-deploy:
-  provider: heroku
-  api_key:
-    secure: nUU4rgTUg6O3mnm3c9KV43m1a4S+D18ku2wzZfNBeD2b7zHmIn2NwLY6zebFd+kvxzwII5HiHhm5CHLGSDCOZqVQHkEN8Ms+cd39eQCzoFrJB921zbHLX6WspkbHAwRTtYYsE2WUqTo7iP1+1ckRWSYp6GcqdIU/LhKVWftWYsqtPiEUyA8Dk1Gn0qfqj0L5t325HLklLQfBFID1133/Yv+RUQeevPfHz0Cfw7KsB8vvf1zLx8eU0k7qkYAdlKIkE4EnjdkJSxoeUDBnWCG98lgTXYLI5Jf6VCeMR9BP5bYZPp0nK6ad7dUCA05+3M9xVfD8TAYVemmcerw15UN4QJTOj7y04iah4NcYSEOVQ2rAj0HzH8hPU79Sf/zERXx02xCsf46As8FE721dbcAqpz5wCIu6rO8+YZdMWNUnqb8MhcyTohRiqiG/Ke4WCoifu81U3vPgWt5Qx+n39ZqZ5to7p+/U5VseV9DPosTshBlWEjkKMsf89Scyq6f1nhX468b1ufoWFr6koUQmF5Y2Swppk4yQwdcUyyqU4rVwUofETQ34sXaqNpatgzZj/pSga6yBdYnubUYS0eVuHvsY4Ykhd5RhDs5RdhkvF1iHcPYOKEcCkVFihVpGQLswL0HHGFzO5BOaA6+vJzXHHo366SXqWlmQEVFIrxpR5yjNg6Y=
-  script:
-  - heroku whoami
+
+jobs:
+  include:
+    - stage: auth_check
+      name: "Auth check"
+      script: ./auth_check
