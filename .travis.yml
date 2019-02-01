@@ -7,6 +7,7 @@ otp_release:
 cache:
   directories:
     - deps
+
 env:
   global:
   - LOCAL_POSTGRES_USERNAME=postgres LOCAL_POSTGRES_PASSWORD=postgres
@@ -14,15 +15,14 @@ services: "-postgesql"
 addons:
   postgresql: '9.6'
 sudo: false
-install:
-- mix local.rebar --force
-- mix local.hex --force
-- mix deps.get
 
 jobs:
   include:
     - stage: test
-      script: mix test
+      script: ./build_scripts/test
     - stage: setup
       name: "Ensure setup"
-      script: ./ensure_setup
+      script: ./build_scripts/ensure_setup
+    - stage: push
+      name: "Register Container Image"
+      script: ./build_scripts/push_container
