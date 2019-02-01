@@ -17,6 +17,7 @@ install:
 script:
 - mix test
 deploy:
+  provider: heroku
   api_key:
     secure: HEROKU_DEPLOY_KEY
   script:
