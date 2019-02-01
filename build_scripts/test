@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 
 echo "______ Let's Test! _________ "
-mix local.rebar --force
-mix local.hex --force
-mix deps.get
 mix test
