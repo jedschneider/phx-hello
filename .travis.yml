@@ -16,13 +16,16 @@ addons:
   postgresql: '9.6'
 sudo: false
 
+stages:
+  - test
+  - name: push
+    if: branch = master
+  - name: release
+    if: branch = master
 jobs:
   include:
     - stage: test
       script: ./build_scripts/test
-    - stage: setup
-      name: "Ensure setup"
-      script: ./build_scripts/ensure_setup
     - stage: push
       name: "Register Container Image"
       script: ./build_scripts/push_container

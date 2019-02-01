@@ -2,7 +2,12 @@
 
 echo "______ Push Container to Heroku Registery _________ "
 
-echo " here is where the work will happen"
+
+echo "------ generate prod.secret.exs file -------------"
+
+echo "config :hello, HelloWeb.Endpoint, secret_key_base: \"$SECRET_KEY_BASE\"" > config/prod.secret.exs
+
+echo `ls -la config`
 
 # we push a release so that we have a hook to do any
 # other deployment tasks before we send out the container
