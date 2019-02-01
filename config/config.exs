@@ -27,4 +27,10 @@ config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
+#
+defmodule EnvHelpers do
+  def toggle_ssl("false"), do: false
+  def toggle_ssl(_), do: true
+end
+
 import_config "#{Mix.env()}.exs"

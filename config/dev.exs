@@ -67,9 +67,13 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
+# config :hello, Hello.Repo,
+#   username: System.get_env("LOCAL_POSTGRES_USERNAME"),
+#   password: System.get_env("LOCAL_POSTGRES_PASSWORD"),
+#   database: "hello_dev",
+#   hostname: "localhost",
+#   pool_size: 10
 config :hello, Hello.Repo,
-  username: System.get_env("LOCAL_POSTGRES_USERNAME"),
-  password: System.get_env("LOCAL_POSTGRES_PASSWORD"),
-  database: "hello_dev",
-  hostname: "localhost",
-  pool_size: 10
+  url: "postgres://jed:@localhost:5432/hello_dev",
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  ssl: false

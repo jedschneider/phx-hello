@@ -10,12 +10,20 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :hello, HelloWeb.Endpoint,
-  http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  http: [:inet6, port: {:system, "PORT"}],
+  url: [host: "example.com", port: {:system, "PORT"}],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  root: ".",
+  server: true,
+  version: Application.spec(:hello, :vsn)
 
 # Do not print debug messages in production
 config :logger, level: :info
+config :hello, Hello.Repo,
+  url: System.get_env("DATABASE_URL"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  # ssl: false # toggle for local testing of distillery release
+  ssl: true
 
 # ## SSL Support
 #
@@ -56,7 +64,7 @@ config :logger, level: :info
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
 #
-#     config :phoenix, :serve_endpoints, true
+# config :phoenix, :serve_endpoints, true
 #
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
