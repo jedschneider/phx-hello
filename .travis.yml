@@ -18,11 +18,11 @@ install:
 - mix local.rebar --force
 - mix local.hex --force
 - mix deps.get
-script:
-- mix test
 
 jobs:
   include:
-    - stage: auth_check
-      name: "Auth check"
-      script: ./auth_check
+    - stage: test
+      script: mix test
+    - stage: setup
+      name: "Ensure setup"
+      script: ./ensure_setup
