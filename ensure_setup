@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-echo "______ Auth Check _________ "
+echo "______ Heroku User Check _________ "
 echo `heroku whoami`
+echo "------ Git Commit for Tag -------- "
+echo `git rev-parse --short $TRAVIS_COMMIT`
