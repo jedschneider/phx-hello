@@ -54,4 +54,4 @@ WORKDIR /app
 # Cache elixir deps
 COPY --from=build /app/_build/${MIX_ENV}/rel/hello ./
 
-CMD ./hello foreground
+CMD ./bin/hello foreground

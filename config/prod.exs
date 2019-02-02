@@ -18,12 +18,7 @@ config :hello, HelloWeb.Endpoint,
   version: Application.spec(:hello, :vsn)
 
 # Do not print debug messages in production
-config :logger, level: :info
-config :hello, Hello.Repo,
-  url: System.get_env("DATABASE_URL"),
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  # ssl: false # toggle for local testing of distillery release
-  ssl: true
+config :logger, level: :debug
 
 # ## SSL Support
 #
