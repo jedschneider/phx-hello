@@ -10,13 +10,6 @@ use Mix.Config
 config :hello,
   ecto_repos: [Hello.Repo]
 
-# Configures the endpoint
-config :hello, HelloWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "q2N9ORk0U1JO5xBz+wDTEeHXhGn5AixzXoVrymAgkIdnjbv3YsUvA0yifF9hF2I6",
-  render_errors: [view: HelloWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Hello.PubSub, adapter: Phoenix.PubSub.PG2]
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

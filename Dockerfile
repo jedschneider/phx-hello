@@ -38,7 +38,8 @@ ARG MIX_ENV=prod
 ENV LANG=en.US.UTF-8 \
   TERM=xterm \
   HOME=/root \
-  MIX_ENV=prod
+  MIX_ENV=prod \
+  RELEASE_ROOT_DIR="/app"
 
 RUN apk update && \
   apk --no-cache --update add -f \
