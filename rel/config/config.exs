@@ -11,5 +11,5 @@ config :hello, HelloWeb.Endpoint,
 
 config :hello, Hello.Repo,
   url: System.get_env("DATABASE_URL"),
-  pool_size: 10,
+  pool_size: 1,
   ssl: true
