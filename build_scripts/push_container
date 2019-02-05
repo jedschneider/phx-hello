@@ -9,5 +9,5 @@ echo "------ generate prod.secret.exs file -------------"
 heroku container:login
 # we push a release so that we have a hook to do any
 # other deployment tasks before we send out the container
-heroku container:push release --app=$HEROKU_APP
+heroku container:push web --app=$HEROKU_APP
 

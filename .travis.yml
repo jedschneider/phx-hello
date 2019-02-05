@@ -29,3 +29,5 @@ jobs:
     - stage: push
       name: "Register Container Image"
       script: ./build_scripts/push_container
+    - stage: release
+      script: ./build_scripts/release_container
