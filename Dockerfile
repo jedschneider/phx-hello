@@ -30,7 +30,7 @@ RUN mix do deps.get, compile, release --env=prod
 # Runtime image
 #
 
-FROM elixir:1.7.4-alpine AS build
+FROM elixir:1.7.4-alpine AS runtime
 
 ARG MIX_ENV=prod
 
